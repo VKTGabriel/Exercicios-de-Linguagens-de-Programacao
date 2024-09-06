@@ -1,10 +1,11 @@
 package Exercicios_primeira_aula;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Exercicio8 {
     public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in).useLocale(Locale.US);
         int[] num = new int[4];
 
         for (int i = 0; i < num.length; i++) {

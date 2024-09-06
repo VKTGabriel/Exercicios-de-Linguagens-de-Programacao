@@ -1,10 +1,11 @@
 package Exercicios_primeira_aula;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Exercicio7 {
     public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in).useLocale(Locale.US);
 
         System.out.print("Digite um valor entre 2 e 5: ");
         int n = ler.nextInt();
