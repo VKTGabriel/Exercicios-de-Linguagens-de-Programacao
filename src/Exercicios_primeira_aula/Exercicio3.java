@@ -1,4 +1,4 @@
-package Exercicios_Primeira_Aula;
+package Exercicios_primeira_aula;
 
 import java.util.Locale;
 import java.util.Scanner;
