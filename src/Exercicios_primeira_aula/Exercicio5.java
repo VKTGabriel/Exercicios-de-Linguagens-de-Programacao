@@ -13,14 +13,15 @@ public class Exercicio5 {
         posicao = ler.nextInt();
 
         if (posicao > 0) {
-            if (posicao <= 2) {
+            if (posicao == 1) {
+                valor = 0;
+            } else if(posicao <= 3){
                 valor = 1;
-
             } else {
                 valor = 1;
                 anterior = 1;
 
-                for (int i = 3; i <= posicao; i++) {
+                for (int i = 4; i <= posicao; i++) {
                     seguro = valor;
                     valor += anterior;
                     anterior = seguro;
