@@ -15,7 +15,7 @@ public class Exercicio9 {
         Scanner ler = new Scanner(System.in);
         int valor;
 
-        System.out.print("Digite dois valor: ");
+        System.out.print("Digite um valor: ");
         valor = ler.nextInt();
 
         System.out.print("Soma dos números: " + somaNaturais(valor));
