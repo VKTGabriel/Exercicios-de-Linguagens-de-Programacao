@@ -32,7 +32,7 @@ public class Vetor {
                 System.out.println("Digite o tamanho do vetor:");
                 tamanho = ler.nextInt();
                 if (tamanho < 0){
-                    System.out.printf("Tamanho [%d] inválido, digite apenas números maiores que 0\n", tamanho);
+                    System.out.printf("Tamanho [%d] inválido, digite apenas números maiores que 0!\n", tamanho);
                     ler.nextLine();
                     continue;
                 }
