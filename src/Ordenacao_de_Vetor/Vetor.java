@@ -80,10 +80,29 @@ public class Vetor {
     public void metodoHeapfy() {
         Vetor novo = copiaSegura();
         for (int i = 0; i < novo.getVetor().length/2; i++) {
+            int a, b;
+            if ((2*i) + 2 >= novo.getVetor().length) {
+                a = (2*i) + 1;
+                b = a;
+            } else {
+                a = (2*i) + 1;
+                b = (2*i) + 2;
+            }
 
-
+            if(novo.getVetor()[i] < novo.getVetor()[a] || novo.getVetor()[i] < novo.getVetor()[b]){
+                int guarda = novo.getVetor()[i];
+                if (novo.getVetor()[a] > novo.getVetor()[b]){
+                    novo.getVetor()[i] = novo.getVetor()[a];
+                    novo.getVetor()[a] = guarda;
+                } else {
+                    novo.getVetor()[i] = novo.getVetor()[b];
+                    novo.getVetor()[b] = guarda;
+                }
+                i = (i > 0) ? (i%2 == 0) ? (i-2)/2 : (i-1)/2 : 1;
+                i--;
+            }
         }
-        exibirInfo("Heapfy", novo);
+        exibirInfo("MAX Heapfy", novo);
     }
 
     public String toString() {
