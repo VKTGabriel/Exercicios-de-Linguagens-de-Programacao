@@ -81,6 +81,7 @@ public class Vetor {
         Vetor novo = copiaSegura();
         for (int i = 0; i < novo.getVetor().length/2; i++) {
 
+
         }
         exibirInfo("Heapfy", novo);
     }
