@@ -49,13 +49,13 @@ public class Vetor {
 
     public void metodoSelection() {
         Vetor novo = copiaSegura();
-        for (int j = 0; j < novo.getVetor().length; j++) {
-            int posMenor = j;
-            for (int i = j; i < novo.getVetor().length; i++) {
-                posMenor = (novo.getVetor()[posMenor] < novo.getVetor()[i]) ? posMenor : i;
+        for (int i = 0; i < novo.getVetor().length; i++) {
+            int posMenor = i;
+            for (int j = i; j < novo.getVetor().length; j++) {
+                posMenor = (novo.getVetor()[posMenor] < novo.getVetor()[j]) ? posMenor : j;
             }
-            int x = novo.getVetor()[j];
-            novo.getVetor()[j] = novo.getVetor()[posMenor];
+            int x = novo.getVetor()[i];
+            novo.getVetor()[i] = novo.getVetor()[posMenor];
             novo.getVetor()[posMenor] = x;
         }
         exibirInfo("Selection", novo);
@@ -63,23 +63,37 @@ public class Vetor {
 
     public void metodoInsert(){
         Vetor novo = copiaSegura();
-        for (int j = 1; j < novo.getVetor().length; j++) {
-            int guarda = novo.getVetor()[j];
-            for (int i = j; i > -1; i--){
-                if (i == 0 || guarda >= novo.getVetor()[i-1]){
-                    novo.getVetor()[i] = guarda;
+        for (int i = 1; i < novo.getVetor().length; i++) {
+            int guarda = novo.getVetor()[i];
+            for (int j = i; j > -1; j--){
+                if (j == 0 || guarda >= novo.getVetor()[j -1]){
+                    novo.getVetor()[j] = guarda;
                     break;
                 } else {
-                    novo.getVetor()[i] = novo.getVetor()[i-1];
+                    novo.getVetor()[j] = novo.getVetor()[j -1];
                 }
             }
         }
         exibirInfo("Insert", novo);
     }
 
-    public void metodoHeapfy(){
+    public void metodoHeapfy() {
         Vetor novo = copiaSegura();
-
+        for (int i = 0; i < novo.getVetor().length/2; i++) {
+            if (novo.getVetor()[i] >= novo.getVetor()[(2*i)+1] && novo.getVetor()[i] >= novo.getVetor()[(2*i)+2]){
+                continue;
+            } else {
+                int x = novo.getVetor()[i];
+                if (novo.getVetor()[(2*i)+2] >= novo.getVetor()[(2*i)+1]){
+                    novo.getVetor()[i] = novo.getVetor()[(2*i)+2];
+                    novo.getVetor()[(2*i)+2] = x;
+                } else {
+                    novo.getVetor()[i] = novo.getVetor()[(2*i)+1];
+                    novo.getVetor()[(2*i)+1] = x;
+                }
+                i = -1;
+            }
+        }
         exibirInfo("Heapfy", novo);
     }
 
@@ -93,7 +107,7 @@ public class Vetor {
 
     public void exibirInfo(String tipo, Vetor ArrayFormat) {
         System.out.printf("\nMétodo: %s\nArray original: %s\nArray ordenado: %s\n",
-                tipo, toString(), ArrayFormat.toString());
+                tipo, this.toString(), ArrayFormat.toString());
     }
 
     public int[] getVetor() {
