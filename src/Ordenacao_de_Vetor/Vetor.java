@@ -1,5 +1,6 @@
 package Ordenacao_de_Vetor;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Vetor {
@@ -23,14 +24,38 @@ public class Vetor {
     }
 
     private void preencheVetor() {
-        System.out.println("Digite o tamanho do vetor:");
         Scanner ler = new Scanner(System.in);
-        this.vetor = new int[ler.nextInt()];
+        int tamanho, i = 0;
 
-        for (int i=0; i<this.vetor.length; i++){
-            System.out.printf("Digite o valor da posição [%d]:\n",i);
-            this.vetor[i] = ler.nextInt();
-        }
+        do {
+            try {
+                System.out.println("Digite o tamanho do vetor:");
+                tamanho = ler.nextInt();
+                if (tamanho < 0){
+                    System.out.printf("Tamanho [%d] inválido, digite apenas números maiores que 0\n", tamanho);
+                    ler.nextLine();
+                    continue;
+                }
+                break;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Erro ao preencher o tamanho do vetor, Digite apena um número inteiro!");
+                ler.nextLine();
+            }
+        } while (true);
+
+        this.vetor = new int[tamanho];
+
+        do {
+            try {
+                System.out.printf("Digite o valor da posição [%d]:\n",i);
+                getVetor()[i] = ler.nextInt();
+                i++;
+            } catch (InputMismatchException e) {
+                System.out.printf("Erro ao preencher a posição [%d] do vetor, Digite apena um número inteiro!\n", i);
+                ler.nextLine();
+            }
+        } while (i < getVetor().length);
     }
 
     public void metodoBubble() {
