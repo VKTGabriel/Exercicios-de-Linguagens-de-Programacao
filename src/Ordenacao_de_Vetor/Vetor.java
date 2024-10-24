@@ -1,4 +1,4 @@
-package Ordenaxao_de_Vetor;
+package Ordenacao_de_Vetor;
 
 import java.util.Scanner;
 
@@ -23,7 +23,7 @@ public class Vetor {
     }
 
     private void preencheVetor() {
-        System.out.println("Digite o tamanho do vetor");
+        System.out.println("Digite o tamanho do vetor:");
         Scanner ler = new Scanner(System.in);
         this.vetor = new int[ler.nextInt()];
 
@@ -61,6 +61,28 @@ public class Vetor {
         exibirInfo("Selection", novo);
     }
 
+    public void metodoInsert(){
+        Vetor novo = copiaSegura();
+        for (int j = 1; j < novo.getVetor().length; j++) {
+            int guarda = novo.getVetor()[j];
+            for (int i = j; i > -1; i--){
+                if (i == 0 || guarda >= novo.getVetor()[i-1]){
+                    novo.getVetor()[i] = guarda;
+                    break;
+                } else {
+                    novo.getVetor()[i] = novo.getVetor()[i-1];
+                }
+            }
+        }
+        exibirInfo("Insert", novo);
+    }
+
+    public void metodoHeapfy(){
+        Vetor novo = copiaSegura();
+
+        exibirInfo("Heapfy", novo);
+    }
+
     public String toString() {
         String array = "";
         for (int pos : vetor) {
@@ -70,7 +92,7 @@ public class Vetor {
     }
 
     public void exibirInfo(String tipo, Vetor ArrayFormat) {
-        System.out.printf("\nMétodo: %s\nArray original: %s\nArray ordenado: %s",
+        System.out.printf("\nMétodo: %s\nArray original: %s\nArray ordenado: %s\n",
                 tipo, toString(), ArrayFormat.toString());
     }
 
